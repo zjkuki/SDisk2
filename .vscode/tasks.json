@@ -5,12 +5,7 @@
             "label": "Clean",
             "detail": "Run clean",
             "type": "shell",
-            "command": "Remove-Item \"${fileBasenameNoExtension}.elf\", \"${fileBasenameNoExtension}.hex\" -Force -ErrorAction \"SilentlyContinue\"",
-            /*"args": [
-                    "/Q",
-                    "${workspaceFolder}\\${fileBasenameNoExtension}.elf,",
-                    "${workspaceFolder}\\${fileBasenameNoExtension}.hex"                    
-            ],*/
+            "command": "Remove-Item \"*.d\", \"*.map\", \"*.o\", \"*.elf\" -Force -ErrorAction \"SilentlyContinue\"",
             "problemMatcher": [
                 
             ],            
@@ -20,36 +15,38 @@
             }
         },        
         {
-            "label": "Compiler",
-            "detail": "Run compiler",
-            "type": "shell",
-            "command": "D:\\AVR\\avr8-gnu-toolchain\\bin\\avr-gcc.exe",
-            "args": [
-                    "${workspaceFolder}\\${fileBasenameNoExtension}.c",
-                    "-o",
-                    "${workspaceFolder}\\${fileBasenameNoExtension}.elf",
-                    "-mmcu=atmega328",
-                    "-DF_CPU=16000000UL",
-                    "-Os"                
-            ],
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
             "label": "Build",
-            "detail": "Run build",
+            "detail": "Build SDisk2 Hex File",
             "type": "shell",
-            "command": "D:\\AVR\\avr8-gnu-toolchain\\bin\\avr-objcopy.exe",
+            "command": "${workspaceFolder}\\firmware\\src\\makesdisk.cmd",
             "args": [
-                    "${fileBasenameNoExtension}.elf",
-                    "-O",
-                    "ihex",
-                    "${fileBasenameNoExtension}.hex"
+                /*"${workspaceFolder}\\$oled.c",
+                "-o",
+                "${workspaceFolder}\\${fileBasenameNoExtension}.elf",                
+                "-g",
+                "-Os",
+                "-Wall",
+                "-Wno-deprecated-declarations",
+                "-Wno-strict-aliasing",
+                "-Wextra",
+                "-D__PROG_TYPES_COMPAT__",
+                "-D_SDISK_OLED_",
+                "-fpack-struct",
+                "-fshort-enums",
+                "-funsigned-char",
+                "-funsigned-bitfields",
+                "-fpermissive",
+                "-fno-exceptions",
+                "-fno-threadsafe-statics",
+                "-ffunction-sections",
+                "-fdata-sections",
+                "-std=gnu99",
+                "-pipe",
+                "-mmcu=atmega328p",
+                "-DF_CPU=27000000UL",
+                "-MMD",
+                "-MP",
+                "-c"*/
             ],
             "problemMatcher": [
                 "$gcc"
@@ -74,14 +71,6 @@
                 "kind": "build",
                 "isDefault": true
             }
-        },
-        {
-            "label": "Quick Build",
-            "detail": "Quick make hex file",
-            "dependsOrder": "sequence",
-            "dependsOn":["Compiler","Build"],
-            "problemMatcher": [
-            ],
-        }                   
+        }
     ]
 }

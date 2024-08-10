@@ -11,27 +11,15 @@
                 "-g",
                 "-Os",
                 "-Wall",
-                "-Wno-deprecated-declarations",
-                "-Wno-strict-aliasing",
                 "-Wextra",
-                "-D__PROG_TYPES_COMPAT__",
-                "-D_SDISK_OLED_",
-                "-fpack-struct",
-                "-fshort-enums",
-                "-funsigned-char",
-                "-funsigned-bitfields",
                 "-fpermissive",
                 "-fno-exceptions",
                 "-fno-threadsafe-statics",
                 "-ffunction-sections",
                 "-fdata-sections",
-                "-std=gnu99",
                 "-pipe",
                 "-mmcu=atmega328p",
-                "-DF_CPU=27000000UL",
-                "-MMD",
-                "-MP",
-                "-c"
+                "-DF_CPU=27000000ULUL"
             ]
         }
     ],
