@@ -1,0 +1,87 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Clean",
+            "detail": "Run clean",
+            "type": "shell",
+            "command": "Remove-Item \"${fileBasenameNoExtension}.elf\", \"${fileBasenameNoExtension}.hex\" -Force -ErrorAction \"SilentlyContinue\"",
+            /*"args": [
+                    "/Q",
+                    "${workspaceFolder}\\${fileBasenameNoExtension}.elf,",
+                    "${workspaceFolder}\\${fileBasenameNoExtension}.hex"                    
+            ],*/
+            "problemMatcher": [
+                
+            ],            
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },        
+        {
+            "label": "Compiler",
+            "detail": "Run compiler",
+            "type": "shell",
+            "command": "D:\\AVR\\avr8-gnu-toolchain\\bin\\avr-gcc.exe",
+            "args": [
+                    "${workspaceFolder}\\${fileBasenameNoExtension}.c",
+                    "-o",
+                    "${workspaceFolder}\\${fileBasenameNoExtension}.elf",
+                    "-mmcu=atmega328",
+                    "-DF_CPU=16000000UL",
+                    "-Os"                
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build",
+            "detail": "Run build",
+            "type": "shell",
+            "command": "D:\\AVR\\avr8-gnu-toolchain\\bin\\avr-objcopy.exe",
+            "args": [
+                    "${fileBasenameNoExtension}.elf",
+                    "-O",
+                    "ihex",
+                    "${fileBasenameNoExtension}.hex"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Flash",
+            "detail": "Run flash",
+            "type": "shell",
+            "command": "D:\\AVR\\avrdude\\avrdude.exe",
+            "args": [
+                "-c","arduino","-p","atmega328p","-U","flash:w:\"${fileBasenameNoExtension}.hex\":a","-P","COM3"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Quick Build",
+            "detail": "Quick make hex file",
+            "dependsOrder": "sequence",
+            "dependsOn":["Compiler","Build"],
+            "problemMatcher": [
+            ],
+        }                   
+    ]
+}

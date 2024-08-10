@@ -1,5 +1,15 @@
 {
-    "files.associations": {
-        "config.h": "c"
-    }
+    "AVR.reporter.arguments": [
+        "-C"
+    ],
+    "AVR.source.compiler": "D:\\AVR\\avr8-gnu-toolchain\\bin\\avr-gcc.exe",    
+    "AVR.programmer.tool": "D:\\AVR\\avrdude\\avrdude.exe",    
+    "AVR.programmer.definitions": "D:\\AVR\\avrdude\\avrdude.conf",    
+    "AVR.source.libraries": [],
+    "AVR.device.type": "atmega328p",
+    "AVR.device.frequency": 1000000,
+    "AVR.programmer.type": "arduino",
+    "AVR.programmer.port": "COM3",
+    "AVR.programmer.rate": 115200,
+    "AVR.programmer.arguments": ["-U flash:w:blink.hex:i"]
 }

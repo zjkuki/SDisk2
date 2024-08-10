@@ -1,20 +1,38 @@
 {
     "configurations": [
         {
-            "name": "Win32",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "windowsSdkVersion": "10.0.19041.0",
-            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64"
+            "name": "AVR",
+            "intelliSenseMode": "${default}",
+            "compilerPath": "D:\\AVR\\avr8-gnu-toolchain\\bin\\avr-gcc.exe",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "includePath": [],
+            "compilerArgs": [
+                "-g",
+                "-Os",
+                "-Wall",
+                "-Wno-deprecated-declarations",
+                "-Wno-strict-aliasing",
+                "-Wextra",
+                "-D__PROG_TYPES_COMPAT__",
+                "-D_SDISK_OLED_",
+                "-fpack-struct",
+                "-fshort-enums",
+                "-funsigned-char",
+                "-funsigned-bitfields",
+                "-fpermissive",
+                "-fno-exceptions",
+                "-fno-threadsafe-statics",
+                "-ffunction-sections",
+                "-fdata-sections",
+                "-std=gnu99",
+                "-pipe",
+                "-mmcu=atmega328p",
+                "-DF_CPU=27000000UL",
+                "-MMD",
+                "-MP",
+                "-c"
+            ]
         }
     ],
     "version": 4
